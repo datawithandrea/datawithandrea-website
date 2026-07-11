@@ -3,125 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data with Andrea</title>
+
+<title>Data with Andrea | Power BI Dashboard Specialist</title>
+<meta name="description" content="Power BI dashboard refinement, DAX optimisation and report design.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --navy:#24384E;
---gold:#D9B37A;
---cream:#F7F6F2;
---text:#233240;
+--navy-dark:#1A2C3D;
+--gold:#D8B06A;
+--background:#F7F8F7;
+--background-pale:#FBFCFB;
+--text:#22313D;
 --muted:#667085;
---card:#fff;
+--white:#fff;
+--border:rgba(36,56,78,.10);
+--shadow:0 20px 60px rgba(18,34,49,.10);
+--radius-large:30px;
+--radius-medium:20px;
+--page-width:1280px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
-.container{max-width:1200px;margin:auto;padding:0 34px}
-header{
-position:fixed;top:0;width:100%;z-index:1000;
-background:rgba(36,56,78,.88);
+body{font-family:Manrope,sans-serif;background:var(--background);color:var(--text);line-height:1.75}
+.page-width{max-width:var(--page-width);margin:auto;padding:0 32px}
+.site-header{
+position:fixed;top:0;left:0;right:0;
+height:82px;
+display:flex;
+align-items:center;
+background:rgba(26,44,61,.78);
 backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(255,255,255,.08);
+z-index:1000;
 }
-nav{height:86px;display:flex;justify-content:space-between;align-items:center}
-.logo,.navlink{color:#fff;text-decoration:none;font-weight:800;font-size:1.45rem}
-.logo span,.navlink span{color:var(--gold)}
+.navigation{
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+.brand,.nav-link{
+text-decoration:none;
+font-weight:800;
+font-size:1.1rem;
+color:#fff;
+letter-spacing:.2px;
+}
+.brand span,.nav-link span{color:var(--gold)}
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
-position:relative;
 background:
-linear-gradient(90deg,rgba(23,39,56,.93),rgba(23,39,56,.65)),
-url("images/datawithandrea-hero.png") center/cover;
+linear-gradient(90deg,rgba(26,44,61,.90),rgba(26,44,61,.55)),
+url('images/datawithandrea-hero.jpg') center/cover;
+position:relative;
 color:#fff;
 }
-.hero .container{position:relative;padding-top:80px}
-.kicker{display:flex;align-items:center;gap:14px;color:var(--gold);font-size:.92rem;font-weight:700;letter-spacing:3px;text-transform:uppercase}
-.kicker:before{content:"";width:42px;height:2px;background:var(--gold)}
-.hero h1{font-size:4.7rem;line-height:1.02;font-weight:800;max-width:760px;margin:28px 0}
+.hero::after{
+content:"";
+position:absolute;
+top:40px;
+right:-60px;
+width:650px;
+height:650px;
+background:url('images/pbi-overlay.png') center/contain no-repeat;
+opacity:.045;
+pointer-events:none;
+}
+.hero-content{
+max-width:690px;
+padding-top:40px;
+position:relative;
+z-index:2;
+}
+.eyebrow{
+display:flex;
+align-items:center;
+gap:14px;
+font-size:.82rem;
+letter-spacing:2px;
+text-transform:uppercase;
+font-weight:700;
+color:var(--gold);
+margin-bottom:28px;
+}
+.eyebrow:before{content:"";width:40px;height:2px;background:var(--gold)}
+.hero h1{
+font-size:5rem;
+line-height:.96;
+font-weight:800;
+margin-bottom:26px;
+}
 .hero h1 span{color:var(--gold)}
-.hero p{max-width:650px;font-size:1.18rem;line-height:1.8;margin-bottom:38px}
-.btn{
-display:inline-block;
-padding:18px 34px;
+.hero-description{
+font-size:1.15rem;
+max-width:610px;
+margin-bottom:42px;
+color:rgba(255,255,255,.9);
+}
+.hero-actions{display:flex;gap:16px}
+.primary-button,.secondary-button{
+padding:18px 32px;
 border-radius:999px;
 text-decoration:none;
 font-weight:700;
-transition:.3s;
+transition:.25s;
 }
-.btn-primary{background:var(--gold);color:var(--navy)}
-.btn-secondary{margin-left:12px;border:1px solid rgba(255,255,255,.35);color:#fff}
-.btn:hover{transform:translateY(-4px)}
+.primary-button{background:var(--gold);color:var(--navy)}
+.secondary-button{border:1px solid rgba(255,255,255,.35);color:#fff}
+.primary-button:hover,.secondary-button:hover{transform:translateY(-3px)}
 .angle{
 height:90px;
-margin-top:-90px;
-background:var(--cream);
+background:var(--background);
 clip-path:polygon(0 35%,100% 0,100% 100%,0 100%);
+margin-top:-90px;
+position:relative;
+z-index:2;
 }
 section{padding:110px 0}
-.alt{background:#eef2ec}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.two img,.service img{width:100%;border-radius:24px}
-.small{display:flex;align-items:center;gap:14px;color:#b77c3d;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
-.small:before{content:"";width:36px;height:2px;background:#b77c3d}
-h2{font-size:3rem;margin-bottom:18px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
-.service{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.08);transition:.35s}
-.service:hover{transform:translateY(-8px)}
-.service img{transition:.4s}
-.service:hover img{transform:scale(1.04)}
-.service div{padding:28px}
-details{background:#fff;padding:22px;border-radius:18px;margin-bottom:18px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-summary{cursor:pointer;font-weight:700}
-details p{margin-top:12px;color:var(--muted)}
-.cta{background:var(--navy);color:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
-form{background:#fff;padding:36px;border-radius:24px}
-input,select,textarea{width:100%;padding:16px;border-radius:12px;border:1px solid #ddd;font:inherit;margin-bottom:16px}
-textarea{min-height:170px}
-button{border:none;cursor:pointer}
-footer{background:#182838;color:#d7dde3;padding:60px 0}
-.footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
 .fade{opacity:0;transform:translateY(40px);transition:.8s}
 .fade.show{opacity:1;transform:none}
-@media(max-width:900px){
-.hero h1{font-size:3.2rem}
-.two,.contact-grid,.footer{grid-template-columns:1fr}
-}
+/* remaining sections from previous version go here */
 </style>
 </head>
 <body>
 
-<header>
-<div class="container">
-<nav>
-<a class="logo" href="#"><span>Data with</span> Andrea</a>
-<a class="navlink" href="https://parkrun.datawithandrea.com.au">Event <span>Insights</span></a>
+<header class="site-header">
+<nav class="navigation page-width">
+<a class="brand" href="#">Data with <span>Andrea</span></a>
+<a class="nav-link" href="https://parkrun.datawithandrea.com.au">Event <span>Insights</span></a>
 </nav>
-</div>
 </header>
 
 <section class="hero">
-<div class="container">
-<div class="kicker">Power BI Dashboard Specialist</div>
+<div class="page-width">
+<div class="hero-content">
 
-<h1>Power BI dashboards<br>people actually<br><span>enjoy using.</span></h1>
+<div class="eyebrow">Power BI Dashboard Specialist</div>
 
-<p>I help businesses transform cluttered Power BI reports into clean, fast and professional dashboards through smarter DAX, thoughtful design and years of real-world experience.</p>
+<h1>
+Power BI dashboards<br>
+people actually<br>
+<span>enjoy using.</span>
+</h1>
 
-<a href="#contact" class="btn btn-primary">Let's Chat</a>
-<a href="#services" class="btn btn-secondary">View My Services</a>
+<p class="hero-description">
+I help businesses transform cluttered Power BI reports into clean, fast and professional dashboards through smarter DAX, thoughtful design and years of real-world experience.
+</p>
 
+<div class="hero-actions">
+<a class="primary-button" href="#contact">Let's Chat</a>
+<a class="secondary-button" href="#services">View My Services</a>
+</div>
+
+</div>
 </div>
 </section>
 
 <div class="angle"></div>
+
 
 <section class="fade">
 <div class="container two">
@@ -196,9 +242,14 @@ footer{background:#182838;color:#d7dde3;padding:60px 0}
 </footer>
 
 <script>
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.15});
-document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const io=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show");});
+},{threshold:.15});
+document.querySelectorAll(".fade").forEach(el=>io.observe(el));
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
