@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data with Andrea</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,71 +12,87 @@
 <style>
 :root{
 --navy:#24384E;
---gold:#E5C35A;
---bg:#F7F7F3;
---text:#24313f;
+--gold:#D9B37A;
+--cream:#F7F6F2;
+--text:#233240;
 --muted:#667085;
 --card:#fff;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-.container{max-width:1180px;margin:auto;padding:0 28px}
-header{position:fixed;top:0;width:100%;background:rgba(36,56,78,.9);backdrop-filter:blur(10px);z-index:999}
-nav{height:82px;display:flex;align-items:center;justify-content:space-between}
-.logo{color:#fff;text-decoration:none;font-weight:800;font-size:1.5rem}
-.logo span{color:var(--gold)}
-nav ul{display:flex;gap:42px;list-style:none}
-nav a{color:#fff;text-decoration:none;font-weight:700}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+.container{max-width:1200px;margin:auto;padding:0 34px}
+header{
+position:fixed;top:0;width:100%;z-index:1000;
+background:rgba(36,56,78,.88);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+nav{height:86px;display:flex;justify-content:space-between;align-items:center}
+.logo,.navlink{color:#fff;text-decoration:none;font-weight:800;font-size:1.45rem}
+.logo span,.navlink span{color:var(--gold)}
 .hero{
 min-height:100vh;
 display:flex;
 align-items:center;
 position:relative;
 background:
-linear-gradient(90deg,rgba(26,42,60,.92),rgba(26,42,60,.60)),
-url('images/hero-dashboard.jpg') center/cover;
-color:#fff}
-.hero .container{position:relative}
-.kicker{display:flex;align-items:center;gap:14px;color:var(--gold);font-weight:700;letter-spacing:2px;text-transform:uppercase}
-.kicker:before{content:'';width:42px;height:2px;background:var(--gold)}
-h1{font-size:5.6rem;line-height:.95;font-weight:800;max-width:700px;margin:28px 0}
-.hero p{max-width:650px;font-size:1.25rem;margin-bottom:38px}
-.btn{display:inline-block;padding:18px 34px;border-radius:999px;text-decoration:none;font-weight:700;transition:.3s}
-.gold{background:var(--gold);color:var(--navy)}
-.outline{border:1px solid rgba(255,255,255,.4);color:#fff;margin-left:12px}
+linear-gradient(90deg,rgba(23,39,56,.93),rgba(23,39,56,.65)),
+url("images/datawithandrea-hero.jpg") center/cover;
+color:#fff;
+}
+.hero .container{position:relative;padding-top:80px}
+.kicker{display:flex;align-items:center;gap:14px;color:var(--gold);font-size:.92rem;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.kicker:before{content:"";width:42px;height:2px;background:var(--gold)}
+.hero h1{font-size:4.7rem;line-height:1.02;font-weight:800;max-width:760px;margin:28px 0}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:650px;font-size:1.18rem;line-height:1.8;margin-bottom:38px}
+.btn{
+display:inline-block;
+padding:18px 34px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-secondary{margin-left:12px;border:1px solid rgba(255,255,255,.35);color:#fff}
 .btn:hover{transform:translateY(-4px)}
-.angle{height:90px;background:var(--bg);clip-path:polygon(0 35%,100% 0,100% 100%,0 100%);margin-top:-90px}
+.angle{
+height:90px;
+margin-top:-90px;
+background:var(--cream);
+clip-path:polygon(0 35%,100% 0,100% 100%,0 100%);
+}
 section{padding:110px 0}
 .alt{background:#eef2ec}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.two img,.svc img{width:100%;border-radius:24px}
-.small{display:flex;align-items:center;gap:14px;color:#b77c3d;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
-.small:before{content:'';width:36px;height:2px;background:#b77c3d}
-h2{font-size:3rem;line-height:1.05;margin-bottom:18px}
+.two img,.service img{width:100%;border-radius:24px}
+.small{display:flex;align-items:center;gap:14px;color:#b77c3d;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.small:before{content:"";width:36px;height:2px;background:#b77c3d}
+h2{font-size:3rem;margin-bottom:18px}
 .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
-.svc{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.08);transition:.35s}
-.svc:hover{transform:translateY(-8px)}
-.svc img{transition:.4s}
-.svc:hover img{transform:scale(1.04)}
-.svc div{padding:28px}
-details{background:#fff;border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 10px 24px rgba(0,0,0,.06)}
-summary{font-weight:700;cursor:pointer}
+.service{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.08);transition:.35s}
+.service:hover{transform:translateY(-8px)}
+.service img{transition:.4s}
+.service:hover img{transform:scale(1.04)}
+.service div{padding:28px}
+details{background:#fff;padding:22px;border-radius:18px;margin-bottom:18px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+summary{cursor:pointer;font-weight:700}
 details p{margin-top:12px;color:var(--muted)}
 .cta{background:var(--navy);color:#fff}
-.formwrap{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
 form{background:#fff;padding:36px;border-radius:24px}
-input,textarea,select{width:100%;padding:16px;border-radius:12px;border:1px solid #ddd;font:inherit;margin-bottom:16px}
+input,select,textarea{width:100%;padding:16px;border-radius:12px;border:1px solid #ddd;font:inherit;margin-bottom:16px}
 textarea{min-height:170px}
 button{border:none;cursor:pointer}
-footer{background:#182838;color:#d9dde2;padding:60px 0}
-.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-.fade{opacity:0;transform:translateY(35px);transition:.8s}
+footer{background:#182838;color:#d7dde3;padding:60px 0}
+.footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+.fade{opacity:0;transform:translateY(40px);transition:.8s}
 .fade.show{opacity:1;transform:none}
 @media(max-width:900px){
-h1{font-size:3.5rem}
-.two,.formwrap,.foot{grid-template-columns:1fr}
-nav ul{gap:18px;font-size:.9rem}
+.hero h1{font-size:3.2rem}
+.two,.contact-grid,.footer{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -85,12 +101,8 @@ nav ul{gap:18px;font-size:.9rem}
 <header>
 <div class="container">
 <nav>
-<a href="#" class="logo">Data with <span>Andrea</span></a>
-<ul>
-<li><a href="#services">Services</a></li>
-<li><a href="https://parkrun.datawithandrea.com.au">Event Insights</a></li>
-<li><a href="#contact">Let's Chat</a></li>
-</ul>
+<a class="logo" href="#"><span>Data with</span> Andrea</a>
+<a class="navlink" href="https://parkrun.datawithandrea.com.au">Event <span>Insights</span></a>
 </nav>
 </div>
 </header>
@@ -98,10 +110,14 @@ nav ul{gap:18px;font-size:.9rem}
 <section class="hero">
 <div class="container">
 <div class="kicker">Power BI Dashboard Specialist</div>
-<h1>Power BI<br>made<br>beautiful.</h1>
-<p>I help businesses transform existing Power BI dashboards into clean, fast and professional reporting experiences through smarter DAX, better design and thoughtful user experience.</p>
-<a class="btn gold" href="#contact">Let's Chat</a>
-<a class="btn outline" href="https://parkrun.datawithandrea.com.au">View Event Insights</a>
+
+<h1>Power BI dashboards<br>people actually<br><span>enjoy using.</span></h1>
+
+<p>I help businesses transform cluttered Power BI reports into clean, fast and professional dashboards through smarter DAX, thoughtful design and years of real-world experience.</p>
+
+<a href="#contact" class="btn btn-primary">Let's Chat</a>
+<a href="#services" class="btn btn-secondary">View My Services</a>
+
 </div>
 </section>
 
@@ -124,9 +140,9 @@ nav ul{gap:18px;font-size:.9rem}
 <div class="small">Services</div>
 <h2>How I Can Help</h2>
 <div class="services">
-<div class="svc"><img src="images/service1.png"><div><h3>Dashboard Refinement</h3><p>Transform cluttered reports into polished dashboards with cleaner layouts and better storytelling.</p></div></div>
-<div class="svc"><img src="images/service2.png"><div><h3>DAX & Power Query</h3><p>Resolve complex calculations, optimise performance and simplify your data model.</p></div></div>
-<div class="svc"><img src="images/service3.png"><div><h3>Design & User Experience</h3><p>Create app-like reports with intuitive navigation and professional branding.</p></div></div>
+<div class="service"><img src="images/service1.png"><div><h3>Dashboard Refinement</h3><p>Transform cluttered reports into polished dashboards with cleaner layouts and better storytelling.</p></div></div>
+<div class="service"><img src="images/service2.png"><div><h3>DAX & Power Query</h3><p>Resolve complex calculations, optimise performance and simplify your data model.</p></div></div>
+<div class="service"><img src="images/service3.png"><div><h3>Design & User Experience</h3><p>Create app-like reports with intuitive navigation and professional branding.</p></div></div>
 </div>
 </div>
 </section>
@@ -135,24 +151,21 @@ nav ul{gap:18px;font-size:.9rem}
 <div class="container">
 <div class="small">Frequently Asked Questions</div>
 <h2>Questions clients often ask.</h2>
-
 <details open><summary>What services do you offer for Power BI dashboards?</summary><p>I specialise in refining existing Power BI dashboards by enhancing visuals, optimising DAX logic, improving Power Query transformations, boosting performance and creating reports that feel polished and intuitive.</p></details>
 <details><summary>Can you improve dashboards that were built by someone else?</summary><p>Absolutely. That's my speciality. I focus on taking an existing dashboard and making it cleaner, faster, easier to use and more visually engaging.</p></details>
 <details><summary>Can you make our reports match our corporate branding?</summary><p>Yes. Colours, typography, layouts, navigation and report styling can all be aligned to your organisation's branding guidelines.</p></details>
 <details><summary>Do you work remotely?</summary><p>Yes. I work with businesses throughout Australia using Microsoft Teams and secure file sharing.</p></details>
 <details><summary>How do I get started?</summary><p>Complete the contact form below with a brief overview of your dashboard and what you'd like to improve, and I'll be in touch.</p></details>
-
 </div>
 </section>
 
 <section class="cta fade" id="contact">
-<div class="container formwrap">
+<div class="container contact-grid">
 <div>
 <div class="small" style="color:#fff">Let's Chat</div>
 <h2>Let's improve your dashboard.</h2>
 <p>Whether you need a quick DAX fix or a complete dashboard redesign, I'd love to hear about your project.</p>
 </div>
-
 <form action="https://formspree.io/f/your_form_id" method="POST">
 <input name="name" placeholder="Your name" required>
 <input type="email" name="email" placeholder="Email address" required>
@@ -166,35 +179,24 @@ nav ul{gap:18px;font-size:.9rem}
 <option>Training</option>
 </select>
 <textarea name="message" placeholder="Tell me about your dashboard..." required></textarea>
-<button class="btn gold" type="submit">Send Message</button>
+<button class="btn btn-primary" type="submit">Send Message</button>
 </form>
 </div>
 </section>
 
 <footer>
-<div class="container foot">
+<div class="container footer">
 <div>
 <h3>Data with Andrea</h3>
 <p>Helping businesses build cleaner, faster and more intuitive Power BI dashboards.</p>
 </div>
-<div>
-<strong>Explore</strong><br><br>
-Home<br>
-Services<br>
-Event Insights
-</div>
-<div>
-<strong>Contact</strong><br><br>
-Brisbane, Australia<br>
-Made with ❤️
-</div>
+<div><strong>Explore</strong><br><br>Services<br>Event Insights</div>
+<div><strong>Brisbane, Australia</strong><br><br>Made with ❤️ by Data with Andrea</div>
 </div>
 </footer>
 
 <script>
-const io=new IntersectionObserver((entries)=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
-},{threshold:.15});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.15});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
 </script>
 
